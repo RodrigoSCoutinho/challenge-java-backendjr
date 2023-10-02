@@ -4,8 +4,7 @@ package com.example.todolistdesafiobackendjr.controllers;
 import com.example.todolistdesafiobackendjr.entities.Todo;
 
 import com.example.todolistdesafiobackendjr.services.TodoService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,19 +17,23 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    List<Todo> create(Todo todo){
+    @PostMapping
+    List<Todo> create(@RequestBody Todo todo){
       return todoService.create(todo);
    }
 
+   @GetMapping
     List<Todo> list(){
         return todoService.list();
     }
 
+    @PutMapping
     List<Todo> update(Todo todo){
         return todoService.update(todo);
     }
 
-    List<Todo> delete(Long id){
+    @DeleteMapping("{id}")
+    List<Todo> delete(@PathVariable Long id){
         return todoService.delete(id);
     }
 }

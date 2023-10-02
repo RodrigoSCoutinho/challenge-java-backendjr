@@ -22,6 +22,7 @@ public class TodoService {
         return list();
     }
 
+
     public List<Todo> list() {
         Sort sort = Sort.by(Direction.DESC, "prioridade")
                 .and(Sort.by(Direction.ASC, "id"));
